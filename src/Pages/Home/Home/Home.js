@@ -9,16 +9,16 @@ import Testimonials from '../Testimonials';
 
 import Parts from '../Parts/Parts';
 import Banner from '../Banner/Banner';
+import Services from '../Services';
 
 const Home = () => {
     return (
-        <div>
+        <div >
              <Banner></Banner>
-            
+             <Parts></Parts>
+             <Services></Services>
+             <Testimonials></Testimonials>
             <Info></Info>
-            <Parts></Parts>
-            <Parts></Parts>
-            <Testimonials></Testimonials>
             <Contact></Contact>
             <Footer></Footer>
            

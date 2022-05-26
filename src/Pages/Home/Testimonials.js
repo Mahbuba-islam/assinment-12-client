@@ -30,11 +30,11 @@ const Testimonials = () => {
         
     ];
     return (
-        <section className='my-28'>
+        <section className='my-28 px-9'>
             <div>
                 <div>
                     <h4 className="text-xl text-primary font-bold text-center mb-5">Our lovely Client Review</h4>
-                    <h2 className='text-3xl text-center mb-9'>What our Clients say</h2>
+                    <h2 className='text-3xl text-center mb-9 text-error'>What our Clients say</h2>
                 </div>
                 
             </div>

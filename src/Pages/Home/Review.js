@@ -12,8 +12,8 @@ const Review = ({ review }) => {
                         </div>
                     </div>
                     <div>
-                        <h4 className='text-xl'>{review.name}</h4>
-                        <p>{review.location}</p>
+                        <h4 className='text-xl text-primary'>{review.name}</h4>
+                        <p className='text-error'>{review.location}</p>
                     </div>
                 </div>
             </div>

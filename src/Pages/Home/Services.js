@@ -12,7 +12,7 @@ const Services = () => {
         {
             _id: 1,
             name: 'Countries',
-            description: '72',
+            description: '722+',
             img: country
         },
         {
@@ -35,10 +35,10 @@ const Services = () => {
         },
     ];
     return (
-        <div className='mb-9 pb-5'>
+        <div className='mb-9 pb-5 py-12 my-9 px-9'>
             <div className='text-center pb-8 mb-5'>
-                <h3 className='text-title text-4xl font-bold uppercase'>Millions Business Trust Us</h3>
-                <h2 className='text-xl'>Try to understand User Expectation</h2>
+                <h3 className='text-title text-4xl font-bold uppercase text-error'>Millions Business Trust Us</h3>
+                <h2 className='text-2xl text-warning mt-4 text-bold'>Try to understand User Expectation</h2>
             </div>
             <div className='grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 '>
                 {
