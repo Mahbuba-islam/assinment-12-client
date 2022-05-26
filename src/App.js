@@ -15,6 +15,8 @@ import Blogs from './Pages/Blogs/Blogs';
 import Purchase from './Pages/Purchase/Purchase';
 import RequireAuth from './Pages/Login/RequireAuth';
 import Home from './Pages/Home/Home/Home';
+import NotFound from './Pages/Shared/NotFound';
+import MyFortfolio from './Pages/MyFortfolio/MyFortfolio';
 
 function App() {
   return (
@@ -24,6 +26,7 @@ function App() {
         <Route path="/" element={<Home/>} />
         <Route path="about" element={<About />} />
         <Route path="myProfile" element={<MyProfile />} />
+        <Route path="myFortfolio" element={<MyFortfolio/>} />
         <Route path='/part/:id' element={
         <RequireAuth>
           <Purchase></Purchase>
@@ -46,6 +49,7 @@ function App() {
         </Route> */}
         <Route path="login" element={<Login />} />
         <Route path="signup" element={<SignUp />} />
+        <Route path="*" element={<NotFound/>} />
       </Routes>
       <ToastContainer />
     </div>
