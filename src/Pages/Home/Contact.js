@@ -1,19 +1,23 @@
 import React from "react";
-import appointment from '../../assets/images/appointment.png';
+import bgImg from '../../assets/images/new bg.jpg';
 import PrimaryButton from "../Shared/PrimaryButton";
 
 const Contact = () => {
   return (
     <div style={{
-        background:`url(${appointment})`
-    }} className='bg-primary px-10 py-14 '>
-      <div className='text-center pb-14 text-white'>
-        <p className='text-xl font-bold text-transparent bg-clip-text bg-gradient-to-br from-accent to-secondary'>
-          Contact Us
-        </p>
-        <h1 className='text-4xl'>Stay connected with us</h1>
+        background:`url(${bgImg})`
+    }} className=' px-10 py-10 w-50 '>
+      <div className='text-center pb-14 text-white bg-opacity-40 bg-indigo-700 min-w-min p-10 pt '>
+       
+         
+        <h1 className='text-4xl font-bold text-white mt-4'>Join the Power Letter</h1>
+        <p className="mt-4 text-2xl">Sign up here to receive our timely product and company updates. </p>
       </div>
-      <div className='grid grid-cols-1 justify-items-center gap-5'>
+      
+     
+    
+       
+     <div className='grid grid-cols-1 justify-items-center gap-5 px-5 py-5 bg-opacity-40 bg-indigo-700 min-w-min p-10 pt'>
         <input
           type='text'
           placeholder='Email Address'
@@ -31,8 +35,12 @@ const Contact = () => {
         ></textarea>
         <PrimaryButton>Submit</PrimaryButton>
       </div>
-    </div>
+     </div>
+     
+   
   );
 };
 
 export default Contact;
+
+
