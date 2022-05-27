@@ -7,7 +7,7 @@ const MyFortfolio = () => {
           data-aos-delay='400'
           data-aos-duration='900'
           class='text-5xl font-bold px-9 text-error mx-auto text-center'>
-              MY PortFolio
+             WElcome to MY PortFolio
          </h1>
               {/* banner */}
             <div className="hero h-screen lg:h-[60vh]  relative z-10 mt-16 px-7 rounded-lg bg-primary ">
