@@ -1,94 +1,75 @@
 import React, {  useEffect, useState } from 'react';
-import { Link, useParams } from 'react-router-dom';
-// import { useForm } from "react-hook-form";
+import {  useParams } from 'react-router-dom';
+// import OrderModal from './OrderModal';
+ import {useAuthState} from 'react-firebase-hooks/auth'
+ import auth from '../../firebase.init'
+
 
 const Purchase = () => {
     const { id } = useParams();
     const [purchase , setPurchase] = useState({})
-    // const {  register, handleSubmit } = useForm();
-    // const [isReload , setIsReload] = useState(false)
+    const [user, loading, error] =useAuthState(auth)
     
+    const handleOrder = event =>{
+        event.preventDefault();
+        const name = event.target.name.value;
+        console.log(name)
+
+    }
     
-    useEffect( ()=>{
-        const url = `data.json${id}`
+     useEffect( ()=>{
+        const url = `http://localhost:5000/part/${id}`
         fetch(url)
        .then(res => res.json())
         .then(data => setPurchase(data))
     }, [])
 
-//     //delivered product
-// const handleDelivered = event => {
-//   const url = `data.json/${id}`;
-//     fetch(url, {
-//         method: 'PUT',
-//         headers: {
-//             'content-type': 'application/json'
-//         },
-//         body: JSON.stringify(updatedProduct)
-//     })
-//     .then(res=> res.json())
-//     .then(data =>{
-//         console.log(data);
-//         event.target.reset()
-        
-//     } )
-// };
-
-//       /// reStock product
-//    const onSubmit = data => {
-//     const url = `http://localhost:4000/inventoryItem/${id}`;
-//     fetch(url, {
-//         method: 'PUT',
-//         headers: {
-//             'content-type': 'application/json'
-//         },
-//         body: JSON.stringify(data)
-         
-//     })
-//     .then(res=> res.json())
-//     .then(data =>{
-//        console.log(data);
-       
-//     } )
-// };
-
-  
+   
     return (
        
-       <div className=' text-center ' >
-          
-          <div> <h2 className='mt-5 text-primary'> Part details</h2>
-           <div className='d-flex justify-content-center align-items-center border border-3 border-info rounded shadow-sm w-100 bg-info mt-4 ' >
-           <img  src={purchase.img} alt="" />
-        <div className='mt-5 w-50 ms-5 w-50 ms-5 text-center '>
-             <h2>{purchase.name}</h2>
-            <h4>Price: {purchase.price}</h4>
-            <h3>Quantity:{purchase.minimumQuantity}</h3> 
-           <p>Supplier Name: {purchase.maximumQuantity}</p>
-            <p className='px-5' >{purchase.description}</p>
-            <p><small>{id}</small></p>
-            <h5>Sold</h5>
-           
-        {/* <form className='d-flex flex-column w-50 mx-auto' onSubmit={handleSubmit(onSubmit)}>
+       
+        <div class="card lg:card-side  shadow-xl">
+        <figure><img src={purchase.picture} alt="part"/></figure>
+        <div class="card-body">
+          <h2 class="card-title">{purchase.name}</h2>
+          <h2 class="card-title">Price:MinimumQuantity:{purchase.price}</h2>
+          <h2 class="card-title">MinimumQuantity:{purchase.minimumQuantity}</h2>
+          <h2 class="card-title">AvailavailQuantity:{purchase.availavailQuantity}</h2>
+          <p>{purchase.description}</p>
+        <span>{purchase._id}</span>
         
-        <button type="button" onClick={handleDelivered}>
-        delivered
-      </button>
-      <input className='mb-2' placeholder='quantity ' type="number" {...register('quantity')} />
-         <input type="submit" className='my-3'/>  Restock the items
-         </form> */}
-            </div>
-        </div> 
-        </div>
+          <div class="card-actions justify-end">
             
-            <div className='text-center'>
-                <Link to="/manageInventories">
-                    <button  className='btn btn-primary my-5 '>Manage Inventories</button>
-                </Link>
-            </div>
-           
-            
+            {/* <label for="order-modal" onClick={() => setOrder(purchase)} class="btn modal-button">Place Order</label> */}
+           </div>
+
+           {/* modal */}
+          {/* <!-- The button to open modal --> */}
+<label for="my-modal-6" onClick={() => setPurchase(purchase)} class="btn btn w-50 secondary modal-button">placeOrder</label>
+
+{/* <!-- Put this part before </body> tag --> */}
+<input type="checkbox" id="my-modal-6" class="modal-toggle" />
+<div class="modal modal-bottom sm:modal-middle ">
+  <div class="modal-box bg-accent">
+  <label for="my-modal-6" class="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
+    <h3 class="font-bold text-2xl text-primary text-center">Place order For{purchase.name}</h3>
+
+  <form onSubmit={handleOrder} className='grid grid-cols-1 gap-3 justify-items-center mt-5'>
+  <input type="text" placeholder="TYPE YOUR NAME " class="input w-full max-w-xs text-primary " />
+  <input type="text" placeholder="TYPE YOUR EMAIL" class="input w-full max-w-xs " />
+ <input type="text" placeholder="TYPE THE QUANTITY" class="input w-full max-w-xs" />
+  <input type="submit" class="btn btn primary w-full max-w-xs " />
+  </form>
+    
+   
+  </div>
+</div>
+
         </div>
+      </div>
+     
+     
+     
     );
 };
 

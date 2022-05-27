@@ -1,16 +1,19 @@
 import React, { useEffect, useState } from 'react';
+
 import Part from '../Part/Part';
 
 
 
 const Parts = () => {
     const [parts, setParts] = useState([]);
+    
     useEffect( ()=>{
-        fetch('data.json')
+        fetch('http://localhost:5000/part')
         .then(res => res.json())
         .then(data => setParts(data));
     }, [])
    
+
     
     return (
         <div className='mt-12 py-12 px-9 ' >
@@ -22,10 +25,11 @@ const Parts = () => {
                 parts.map(part => <Part
                  key={part._id}
                 part={part}>
+                
              </Part>)
             }
             </div>
-      
+           
             
         </div>
     );

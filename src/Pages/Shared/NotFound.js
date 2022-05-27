@@ -9,7 +9,7 @@ const NotFound = () => {
     <h2 class="card-title text-red-600 text-bold text-6xl text-center">Ooh! You are Lost...</h2>
     <p className='text-warning text-bold text-2xl'>the spaceship left without you</p>
     <div class="card-actions justify-center">
-    <Link to="Home"><button class="btn btn-primary text-white">Back to Home</button></Link>
+    <Link to="home">Back to Home</Link>
       
     </div>
   </div>
