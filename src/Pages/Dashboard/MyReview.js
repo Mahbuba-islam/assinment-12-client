@@ -1,23 +1,38 @@
 import React from 'react';
+import { useForm } from "react-hook-form";
 
-const MyReview = () => {
+const MyReviews = () => {
+    const { register, handleSubmit } = useForm();
+    
+    const onSubmit = data => {
+        console.log(data);
+        const url = 'http://localhost:5000/review';
+        fetch(url, {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        })
+        .then(res=> res.json())
+        .then(result =>{
+            console.log(result);
+        } )
+    };
+
+
     return (
-        <div>
-             {/* <div>
-             <form onSubmit={handleSubmit} className='grid grid-cols-1 gap-3 justify-items-center mt-5'>
-  <input type="text" disabled value={user?.displayName} class="input w-full max-w-xs text-primary " />
-  <input type="text" disabled value={user?.email} class="input w-full max-w-xs " />
-  <input type="text" placeholder='address' name='address'  class="input w-full max-w-xs " />
-  <input type="number" placeholder='phone number' name='phone' class="input w-full max-w-xs " />
- <input type="text" placeholder="Education" name='education' class="input w-full max-w-xs" />
- <input type="text" placeholder="City" name='city' class="input w-full max-w-xs" />
- <input type="text" placeholder="District" name='district' class="input w-full max-w-xs" />
- <input type="text" placeholder="LinkedInLink" name='linkedInLink' class="input w-full max-w-xs" />
-  <input type="submit"  class="btn btn primary w-full max-w-xs " />
-  </form>
-        </div> */}
+        <div className='w-50 mx-auto'>
+            <h2>Please add Review</h2>
+            <form className='d-flex flex-column' onSubmit={handleSubmit(onSubmit)}>
+                <input className='mb-2' placeholder='Name' {...register("name", { required: true, maxLength: 20 })} />
+                <textarea className='mb-2' placeholder='add review' {...register("description")} />
+                <input className='mb-2' placeholder='rating' type="number" {...register("rating")} />
+                <input className='mb-2' placeholder='Photo URL' type="text" {...register("img")} />
+                <input type="submit" value="Add review" />
+            </form>
         </div>
     );
 };
 
-export default MyReview;
+export default MyReviews;

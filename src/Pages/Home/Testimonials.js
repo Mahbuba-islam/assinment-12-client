@@ -1,10 +1,22 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 import people1 from '../../assets/images/people1.png'
 import people2 from '../../assets/images/people2.png'
 import people3 from '../../assets/images/people3.png'
 import Review from './Review';
 const Testimonials = () => {
+    
+        const [review, setReview] = useState([]);
+        
+        useEffect( ()=>{
+            fetch('http://localhost:5000/review')
+            .then(res => res.json())
+            .then(data => setReview(data));
+        }, [])
+       
+    
+   
+   
     const reviews = [
         {
             _id:1,
