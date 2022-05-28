@@ -3,19 +3,40 @@ import {  useParams } from 'react-router-dom';
 // import OrderModal from './OrderModal';
  import {useAuthState} from 'react-firebase-hooks/auth'
  import auth from '../../firebase.init'
-
+import { toast } from 'react-toastify';
 
 const Purchase = () => {
     const { id } = useParams();
     const [purchase , setPurchase] = useState({})
-    const [user, loading, error] =useAuthState(auth)
-    
+    const [user] =useAuthState(auth)
+   
     const handleOrder = event =>{
         event.preventDefault();
-        const name = event.target.name.value;
-        console.log(name)
+        const orders = {
+            orderId:purchase._id,
+            orderName:purchase.name,
+            orderQuantity:event.target.quantity.value,
+            customerName:user.displayName,
+            customerEmail:user.email,
+            phone:event.target.phone.value,
+            address:event.target.address.value
 
-    }
+        }
+        fetch('http://localhost:5000/orders', {
+          method: 'post',
+          headers:{
+            'content-type': 'application/json'
+          },
+          body:JSON.stringify(orders)
+        })
+        .then(res => res.json())
+        .then(data =>{
+          console.log(data)
+          toast('Great Job! Your order is successfully Completed')
+        })
+     };
+
+    
     
      useEffect( ()=>{
         const url = `http://localhost:5000/part/${id}`
@@ -55,9 +76,11 @@ const Purchase = () => {
     <h3 class="font-bold text-2xl text-primary text-center">Place order For{purchase.name}</h3>
 
   <form onSubmit={handleOrder} className='grid grid-cols-1 gap-3 justify-items-center mt-5'>
-  <input type="text" placeholder="TYPE YOUR NAME " class="input w-full max-w-xs text-primary " />
-  <input type="text" placeholder="TYPE YOUR EMAIL" class="input w-full max-w-xs " />
- <input type="text" placeholder="TYPE THE QUANTITY" class="input w-full max-w-xs" />
+  <input type="text" disabled value={user?.displayName} class="input w-full max-w-xs text-primary " />
+  <input type="text" disabled value={user?.email} class="input w-full max-w-xs " />
+  <input type="text" placeholder='ADDRESS' name='address'  class="input w-full max-w-xs " />
+  <input type="number" placeholder='PHONE NUMBER' name='phone' class="input w-full max-w-xs " />
+ <input type="number" placeholder="TYPE THE QUANTITY" name='quantity' class="input w-full max-w-xs" />
   <input type="submit" class="btn btn primary w-full max-w-xs " />
   </form>
     

@@ -15,13 +15,8 @@ const Navbar = () => {
     };
 
     const dropdownMenu = <>
-        <li><Link to='/'><img src={logo} class= 'h-800' alt="logo" /></Link></li>
+        <li><Link to='/'><img src={logo} class= 'h-1200 mr-12' alt="logo" /></Link></li>
         <li><Link to="/">Home</Link></li>
-        <li><Link to="/purchase">Purchase</Link></li>
-        <li><Link to="/review">Review</Link></li>
-        <li><Link to="/contact">Contact</Link></li>
-        <li><Link to="/myProfile">My profile</Link></li>
-        
         <li><Link to="/blogs">Blogs</Link></li>
         <li><Link to="/myFortfolio">My PortFolio</Link></li>
         
@@ -32,7 +27,7 @@ const Navbar = () => {
     </>
     return (
        
-            <div className="navbar bg-base-50 px-12 mr-3 p-7 ">
+            <div className="navbar shadow-md mt-9 w-auto text-primary">
             <div className="navbar-end ml-9">
                 <div className="dropdown">
                     <label tabIndex="0" className="btn btn-ghost lg:hidden">
