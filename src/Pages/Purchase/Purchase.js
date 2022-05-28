@@ -43,7 +43,7 @@ const Purchase = () => {
         fetch(url)
        .then(res => res.json())
         .then(data => setPurchase(data))
-    }, [])
+    }, [id])
 
    
     return (
@@ -53,7 +53,7 @@ const Purchase = () => {
         <figure><img src={purchase.picture} alt="part"/></figure>
         <div class="card-body">
           <h2 class="card-title">{purchase.name}</h2>
-          <h2 class="card-title">Price:MinimumQuantity:{purchase.price}</h2>
+          <h2 class="card-title">Price:{purchase.price}</h2>
           <h2 class="card-title">MinimumQuantity:{purchase.minimumQuantity}</h2>
           <h2 class="card-title">AvailavailQuantity:{purchase.availavailQuantity}</h2>
           <p>{purchase.description}</p>
