@@ -5,11 +5,11 @@ import Footer from '../../Shared/Footer';
 import Info from '../Info';
 
 
-import Testimonials from '../Testimonials';
 
 import Parts from '../Parts/Parts';
 import Banner from '../Banner/Banner';
 import Services from '../Services';
+import Reviews from '../Reviews';
 
 const Home = () => {
     return (
@@ -17,7 +17,7 @@ const Home = () => {
              <Banner></Banner>
              <Parts></Parts>
              <Services></Services>
-             <Testimonials></Testimonials>
+             <Reviews></Reviews>
             <Info></Info>
             <Contact></Contact>
             <Footer></Footer>
