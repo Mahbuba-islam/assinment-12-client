@@ -4,7 +4,7 @@ const UpdatedProfile = () => {
     const [profile, setProfile] = useState([]);
         
     useEffect( ()=>{
-        fetch('http://localhost:5000/profile')
+        fetch('https://sleepy-garden-61288.herokuapp.com')
         .then(res => res.json())
         .then(data => setProfile(data));
     }, [])
