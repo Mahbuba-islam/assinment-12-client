@@ -6,14 +6,14 @@ import About from './Pages/About/About';
 import Login from './Pages/Login/Login';
 
 import SignUp from './Pages/Login/SignUp';
-// import RequireAuth from './Pages/Login/RequireAuth';
+import RequireAuth from './Pages/Login/RequireAuth';
 import { ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+ import 'react-toastify/dist/ReactToastify.css';
 
 // import MyFortfolio from './Pages/MyFortfolio/MyFortfolio';
 import Blogs from './Pages/Blogs/Blogs';
 import Purchase from './Pages/Purchase/Purchase';
-import RequireAuth from './Pages/Login/RequireAuth';
+
 import Home from './Pages/Home/Home/Home';
 import NotFound from './Pages/Shared/NotFound';
 import MyFortfolio from './Pages/MyFortfolio/MyFortfolio';
@@ -51,11 +51,14 @@ function App() {
           <Route path="myReview" element={<MyReview></MyReview>}></Route>
           <Route path="payment/:id" element={<Payment></Payment>}></Route>
           <Route path="myProfile" element={<MyProfile></MyProfile>}></Route>
+          <Route path="addProduct" element={<AddProduct></AddProduct>}></Route>
+        
                 {/* //admin route */}
           <Route path="users" element={<RequireAdmin><Users></Users></RequireAdmin>}></Route>
+          <Route path="users" element={<Users></Users>}></Route>
           <Route path="manageAllOrders" element={<RequireAdmin><ManageAllOrders></ManageAllOrders></RequireAdmin>}></Route>
-          <Route path="addProduct" element={<RequireAdmin><AddProduct></AddProduct></RequireAdmin>}></Route>
-        
+          {/* <Route path="addProduct" element={<RequireAdmin><AddProduct></AddProduct></RequireAdmin>}></Route>
+         */}
         </Route>
         
        

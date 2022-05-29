@@ -19,22 +19,25 @@ const Dashboard = () => {
                 <label for="dashboard-sidebar" class="drawer-overlay"></label>
                 <ul class="menu p-4 overflow-y-auto w-30 px-5 bg-base-100 text-base-content">
                     {/* <!-- Sidebar content here --> */}
-                    <li className='py-2 my-4 text-primary px-2 shadow-lg mr-6 text-center text-1xl font-bold'>
+                    <li>
                         <Link to="/dashboard" >My Orders</Link></li>
-                    <li className='py-2 my-4 text-primary px-2 shadow-lg mr-6 text-center text-1xl font-bold>
+                    <li>
                     <Link to="/dashboard/myReview">My Reviews</Link>
                     </li>
-                    <li className='py-2 my-4 text-primary px-2 shadow-lg mr-6 text-center text-1xl font-bold ><Link to="/dashboard/myProfile">My Profile</Link>
+                    <li><Link to="/dashboard/myProfile">My Profile</Link>
                     </li>
+                    <Link to="/dashboard/users">Make Admin</Link>
+                    <Link to="/dashboard/addProduct">Add Product</Link>
+
                     
                     { admin && <>
-                    <Link to="/dashboard/users" className='py-2 my-4 text-primary px-2 shadow-lg mr-6 text-center text-1xl font-bold'>Make Admin</Link>
+                    {/* <Link to="/dashboard/users" className='py-2 my-4 text-primary px-2 shadow-lg mr-6 text-center text-1xl font-bold'>Make Admin</Link> */}
 
-                    <Link to="/dashboard/myProfile" className='py-2 my-4 text-primary px-2 shadow-lg mr-6 text-center text-1xl font-bold'>My Profile</Link>
+                    <Link to="/dashboard/myProfile">My Profile</Link>
 
-                    <Link to="/dashboard/manageAllOrders" className='py-2 my-4 text-primary px-2 shadow-lg mr-6 text-center text-1xl font-bold'>Manage all orders</Link>
+                    <Link to="/dashboard/manageAllOrders" text-1xl>Manage all orders</Link>
                     
-                    <Link to="/dashboard/addProduct" className='py-2 my-4 text-primary px-2 shadow-lg mr-6 text-1xl text-center font-bold'>Add Product</Link>
+                    {/* <Link to="/dashboard/addProduct">Add Product</Link> */}
                     </>}
                 </ul>
                

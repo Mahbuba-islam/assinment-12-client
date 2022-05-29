@@ -1,7 +1,7 @@
 
 import React, { useEffect, useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
-import { Link } from 'react-router-dom';
+import { Link, Navigate } from 'react-router-dom';
 import auth from '../../firebase.init';
 // import { useNavigate } from 'react-router-dom';
 // import { signOut } from 'firebase/auth';
@@ -9,21 +9,34 @@ import auth from '../../firebase.init';
 
 const MyOrders = () => {
 
-    const [order, setOrder] = useState([]);
+  const [order, setOrder] = useState([]);
     const [user] = useAuthState(auth);
-    // const navigate = useNavigate()
+    
     useEffect(() => {
         if (user) {
-            fetch(`http://localhost:5000/orders/${user.email}`,{
-                method:'GET',
-                headers:{
-                    'authorization':`Bearer ${localStorage.getItem('accessToken')}`
-                }
-            })
+            fetch(`http://localhost:5000/orders/${user.email}`)
             .then(res => res.json())
             .then(data => setOrder(data));
     }
 }, [user])
+
+
+
+const handleDelete = id =>{
+    const proceed = window.confirm('Are you sure?');
+    if(proceed){
+        const url = `http://localhost:5000/order/${id}`;
+        fetch(url, {
+            method: 'DELETE'
+        })
+        .then(res => res.json())
+        .then(data => {
+            console.log(data);
+            const remaining = order.filter(service => service._id !== id);
+            setOrder(remaining);
+        })
+    }
+}
 
     return (
         <div className='mt-12 '>
@@ -39,6 +52,7 @@ const MyOrders = () => {
                             <th>Address</th>
                             <th>price</th>
                             <th>Payment</th>
+                            <th>Delete</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -49,13 +63,16 @@ const MyOrders = () => {
                                 <td>{a.customerEmail}</td>
                                 <td>{a.phone}</td>
                                 <td>{a.price}</td>
+                                <td>{a.price}</td>
+                               
                                 <td>
-                                {(a.price && !a.paid) && <Link to={`/dashboard/payment/$(id)`}><button className='btn btn-xs btn-success text-white px-5 text-center'>pay</button></Link>}
+                                {(a.price && !a.paid) && <Link to={`/dashboard/payment/$(_id)`}><button className='btn btn-xs btn-success text-white px-5 text-center'>pay</button></Link>}
                                     {(a.price && a.paid) && <div>
                                         <p><span className='text-success'>Paid</span></p>
                                         
                                     </div>}
                                 </td>
+                                <td><button onClick={() => handleDelete(order._id)}>X</button></td>
                             </tr>)
 
                 }
@@ -73,25 +90,3 @@ export default MyOrders;
 
 
 
-//  import React, { useEffect, useState } from 'react';
-// import auth from '../../firebase.init';
-
-// const MyOrders = () => {
-//   const [orders, setOrders] = useState([])
-//   const [user] = useState(auth)
-//   useEffect(() => {
-//     if(user){
-//         fetch(`http://localhost:5000/orders?customer=${user.email}`)
-//     .then(res=>res.json())
-//     .then(data => setOrders(data))
-//     }
-
-//   }, [user])
-//     return (
-//         <div>
-//             <h2>MY Orders {orders.length}</h2>
-//         </div>
-//     );
-// };
-
-// export default MyOrders;
