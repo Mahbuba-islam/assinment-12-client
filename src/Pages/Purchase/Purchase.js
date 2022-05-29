@@ -19,7 +19,8 @@ const Purchase = () => {
             customerName:user.displayName,
             customerEmail:user.email,
             phone:event.target.phone.value,
-            address:event.target.address.value
+            address:event.target.address.value,
+            price:event.target.price.value
 
         }
         fetch('http://localhost:5000/orders', {
@@ -64,25 +65,26 @@ const Purchase = () => {
             {/* <label for="order-modal" onClick={() => setOrder(purchase)} class="btn modal-button">Place Order</label> */}
            </div>
 
-           {/* modal */}
-          {/* <!-- The button to open modal --> */}
-<label for="my-modal-6" onClick={() => setPurchase(purchase)} class="btn btn w-50 secondary modal-button">placeOrder</label>
+                                  {/* modal */}
+                                 {/* <!-- The button to open modal --> */}
+             <label for="my-modal-6" onClick={() => setPurchase(purchase)} class="btn btn w-50 secondary modal-button">placeOrder</label>
 
-{/* <!-- Put this part before </body> tag --> */}
-<input type="checkbox" id="my-modal-6" class="modal-toggle" />
-<div class="modal modal-bottom sm:modal-middle ">
-  <div class="modal-box bg-accent">
-  <label for="my-modal-6" class="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
-    <h3 class="font-bold text-2xl text-primary text-center">Place order For{purchase.name}</h3>
+                            {/* <!-- Put this part before </body> tag --> */}
+         <input type="checkbox" id="my-modal-6" class="modal-toggle" />
+            <div class="modal modal-bottom sm:modal-middle ">
+              <div class="modal-box bg-accent">
+              <label for="my-modal-6" class="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
+                <h3 class="font-bold text-2xl text-primary text-center">Place order For{purchase.name}</h3>
 
-  <form onSubmit={handleOrder} className='grid grid-cols-1 gap-3 justify-items-center mt-5'>
-  <input type="text" disabled value={user?.displayName} class="input w-full max-w-xs text-primary " />
-  <input type="text" disabled value={user?.email} class="input w-full max-w-xs " />
-  <input type="text" placeholder='ADDRESS' name='address'  class="input w-full max-w-xs " />
-  <input type="number" placeholder='PHONE NUMBER' name='phone' class="input w-full max-w-xs " />
- <input type="number" placeholder="TYPE THE QUANTITY" name='quantity' class="input w-full max-w-xs" />
-  <input type="submit" class="btn btn primary w-full max-w-xs " />
-  </form>
+        <form onSubmit={handleOrder} className='grid grid-cols-1 gap-3 justify-items-center mt-5'>
+          <input type="text" disabled value={user?.displayName} class="input w-full max-w-xs text-primary " />
+          <input type="text" disabled value={user?.email} class="input w-full max-w-xs " />
+          <input type="text" placeholder='ADDRESS' name='address'  class="input w-full max-w-xs " />
+          <input type="number" placeholder='PHONE NUMBER' name='phone' class="input w-full max-w-xs " />
+          <input type="number" placeholder='price' name='price' class="input w-full max-w-xs " />
+          <input type="number" placeholder="TYPE THE QUANTITY" name='quantity' class="input w-full max-w-xs" />
+           <input type="submit" class="btn btn primary w-full max-w-xs " />
+      </form>
     
    
   </div>
